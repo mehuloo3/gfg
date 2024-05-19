@@ -10,18 +10,18 @@ class Solution{
     int findClosest( int n, int k,int arr[]) 
     { 
         // Complete the function
-        int a=arr[0];
+        int ans=arr[0];
         int diff=abs(arr[0]-k);
         for(int i=1;i<n;i++)
         {
             int current=abs(arr[i]-k);
-            if(current<diff || (current == diff && arr[i]>a))
+            if(current<diff || (current == diff && arr[i]>ans))
             {
                 diff=current;
-                a=arr[i];
+                ans=arr[i];
             }
         }
-        return a;
+        return ans;
         
         
         
