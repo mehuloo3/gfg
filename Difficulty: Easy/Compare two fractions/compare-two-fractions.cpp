@@ -17,7 +17,6 @@ class Solution {
         while(str[i]!='/')
         {
             a=a*10+(str[i]-'0');
-            // i++;
             i++;
         }
         i++;
@@ -45,8 +44,6 @@ class Solution {
         if(a/b==c/d) return "equal";
         else if(a/b>c/d) return f1;
         else return f2;
-        
-        
     }
 };
 
