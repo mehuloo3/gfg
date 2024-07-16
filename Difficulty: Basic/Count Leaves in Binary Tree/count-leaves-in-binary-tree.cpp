@@ -114,6 +114,19 @@ struct Node
          10
       /      \ 
    20       30 */
+   
+// void CountL(Node *root,int count)
+// {
+//      if(!root) return;
+//     if(!root->left && !root->right)
+//     {
+//         count++;
+//         return;
+//     }
+     
+//     CountL(root->left,count);
+//     CountL(root->right,count);
+// }
 int Leaf(Node *root)
 {
     if(root==NULL) return 0;
@@ -128,5 +141,8 @@ int countLeaves(Node* root)
   // Your code here
   return Leaf(root);
 
-  
+
+//   int count=0;
+//   CountL(root,count);
+//   return count;
 }
