@@ -110,7 +110,8 @@ class Solution{
        int L=balance(root->left,check);
        int R=balance(root->right,check);
        
-       if(abs(L-R)>1)
+    //   if(abs(L-R)>1) 
+    if((L-R)!=0 && (L-R)!=1 && (L-R)!=-1)
            check=0;
        
        return 1+max(L,R);
