@@ -79,20 +79,25 @@ struct Node {
 
 class Solution {
   public:
-  Node* creat(vector<int>& num,int start ,int end)
-  {
-      if (start>end) return NULL;
-      int mid=start+(end-start)/2;
-      Node *root=new Node(num[mid]);
-      
-      root->left=creat(num,start,mid-1);
-      root->right=creat(num,mid+1,end);
-      return root;
-      
-  }
+
+      Node* create(vector<int>&num,int start,int end)
+      {
+          if(start>end) 
+          {
+              return NULL;
+          }
+          int mid=start+(end-start)/2;
+          
+          Node *root=new Node(num[mid]);
+          
+          root->left=create(num,start,mid-1);
+          root->right=create(num,mid+1,end);
+          
+          return root;
+      }
     Node* sortedArrayToBST(vector<int>& nums) {
         // Code here
-        return creat(nums,0,nums.size()-1);
+        return create(nums,0,nums.size()-1);
     }
 };
 
