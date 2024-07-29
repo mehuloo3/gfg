@@ -9,13 +9,14 @@ class Solution {
   public:
     int rowWithMax1s(vector<vector<int> > &arr) {
         // code here
-        int maxi=0,res=0;
+        int res=0,maxi=0;
         for(int i=0;i<arr.size();i++)
         {
             int cnt=0;
-            for(int j=0;j<arr[0].size();j++)
+            for(int j=0;j<arr[i].size();j++)
             {
-                if(arr[i][j]==1) cnt++;
+                if(arr[i][j]==1)
+                cnt++;
             }
             if(cnt>maxi)
             {
