@@ -103,15 +103,23 @@ class Solution{
         vector<int>ans;
         while(!s.empty())
         {
-            Node* temp=s.top();
-            ans.push_back(temp->data);
+            Node *temp=s.top();
             s.pop();
-            if(temp->left)
-             s.push(temp->left);
-            if(temp->right)
-             s.push(temp->right);
+            ans.push_back(temp->data);
+             if(temp->left)
+            {
+                s.push(temp->left);
+            }
+             if(temp->right)
+            {
+                s.push(temp->right);
+            }
+            //  if(temp->left)
+            // {
+            //     s.push(temp->left);
+            // }
         }
-      reverse(ans.begin(),ans.end());
+        reverse(ans.begin(),ans.end());
         return ans;
     }
 };
