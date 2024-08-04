@@ -95,63 +95,41 @@ Node* buildTree(string str)
 
 class Solution {
   public:
-// void find(Node *root,int pos,int &l,int &r)
-    // {
-    //     if(!root) return;
-        
-    //     l=min(pos,l);
-    //     r=max(pos,r);
-    //     find(root->left,pos-1,l,r);
-    //     find(root->right,pos+1,l,r);
-    // }
-      void find(Node *root,int pos,int &l,int &r){
-        if(!root)
-            return;
-        l = min(l,pos);
-        r = max(r,pos);
-        find(root->left,pos-1,l,r);
-        find(root->right,pos+1,l,r);
-    }
- void bottom(Node *root,int pos,int level,vector<int>&ans,vector<int>&levelarr){
-        if(!root)
-            return;
-        if(!ans[pos] || level>=levelarr[pos]){
-            ans[pos] = root->data;
-            levelarr[pos] = level;
-        }
-        bottom(root->left,pos-1,level+1,ans,levelarr);
-        bottom(root->right,pos+1,level+1,ans,levelarr);
-    }   
-// void bottom(Node *root,int pos,vector<int>&ans,vector<int>&level,int l)
-// {
-//     if(!root) return;
-    
-//     if(level[pos]<l || !ans[pos])
-//     {
-//         ans[pos]=root->data;
-//         level[pos]=l;
-//     }
-// bottom(root->left,pos-1,ans,level,l+1);
-// bottom(root->right,pos+1,ans,level,l+1);
-// }
+  void find(Node *root,int pos,int &l,int &r)
+  {
+      if(!root) return;
+      l=min(l,pos);
+      r=max(r,pos);
+      find(root->left,pos-1,l,r);
+      find(root->right,pos+1,l,r);
+  }
+  void Tview(Node *root,int pos,vector<int>&ans,vector<int>&level,int l)
+  {
+      if(!root) return;
+      
+      if(level[pos]<=l)
+      {
+          ans[pos]=root->data;
+          level[pos]=l;
+      }
+      Tview(root->left,pos-1,ans,level,l+1);
+      Tview(root->right,pos+1,ans,level,l+1);
+      
+  }
     vector <int> bottomView(Node *root) {
-        // // Your Code Here
-        // int l=0,r=0;
-        
-        // find(root,0,l,r);
+        // Your Code Here
+        int l=0,r=0;
+        find(root,0,l,r);
         // vector<int>ans(r-l+1);
         // vector<int>level(r-l+1,INT_MAX);
-        // bottom(root,-1*l,ans,level,0);
-        // return ans;
         
-         int l=0,r=0;
-        find(root,0,l,r);
-        vector<int>ans(r-l+1);
-        vector<int>levelarr(r-l+1,0);
-        int pos = -1*l;
-        int level = 0;
-        bottom(root,pos,level,ans,levelarr);
+        int size = r - l + 1;
+        vector<int> ans(size, 0);  // Initialize with 0
+        vector<int> level(size, INT_MIN); // Initialize with INT_MIN
+
+        Tview(root,-1*l,ans,level,0);
         return ans;
+        
     }
 };
 
