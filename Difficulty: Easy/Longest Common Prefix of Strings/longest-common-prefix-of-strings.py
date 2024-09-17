@@ -13,21 +13,18 @@ class Solution:
         #   if not l:
         #       return "-1"
         # return l 
-        result = arr[0]
-        length = len(result)
+        ans=arr[0]
+        l=len(ans)
 
         for i in range(1, len(arr)):
-        # Find the index of result in the current string
-            while arr[i].find(result) != 0:
-            # Update the matched substring prefix
-             result = result[:length - 1]
-             length -= 1
-
-            # Check for an empty case and return if true
-            if not result:
+        
+            while arr[i].find(ans) != 0:
+             ans = ans[:l - 1]
+             l -= 1
+            if not ans:
                 return "-1"
 
-        return result
+        return ans
 
         
 #{ 
