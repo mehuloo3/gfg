@@ -1,27 +1,41 @@
-# User function Template for python3
-
-class Solution:
-    
-    #Function to reverse words in a given string.
-    def reverseWords(self,str):
-        # code here 
-        x=str.split(".")
-        x=x[::-1]
-        return (".".join(x))
-        
-        
-                
+//{ Driver Code Starts
+#include <bits/stdc++.h>
+using namespace std;
 
 
-#{ 
- # Driver Code Starts
-# Initial Template for Python 3
+// } Driver Code Ends
 
-if __name__ == '__main__':
-    t = int(input())
-    for i in range(t):
-        s = str(input())
-        obj = Solution()
-        print(obj.reverseWords(s))
+class Solution {
+  public:
+    // Function to reverse words in a given string.
+    string reverseWords(string str) {
+      string s="";
+      string temp="";
+      for(int i=str.size()-1;i>=0;i--)
+      {
+          if(str[i]=='.')
+          {
+              s+=tepm+'.';
+              temp="";
+          }
+          else
+          {
+              temp=str[i]+temp;
+          }
+      }
+      return s+=temp;
+    }
+};
 
-# } Driver Code Ends
+//{ Driver Code Starts.
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        string s;
+        cin >> s;
+        Solution obj;
+        cout << obj.reverseWords(s) << endl;
+    }
+}
+// } Driver Code Ends
