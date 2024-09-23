@@ -23,21 +23,14 @@ class Solution {
             }
             
         }
-        
-    int maxi=arr[0];
-    for(int i=0;i<arr.size();i++){
-    
-        if(arr[i]>maxi)
-        {
-            maxi=arr[i];
-        }
-    }
-    int miss;
-      for(int i=1;i<=arr.size();i++){
+      int miss;
+      for(int i=1;i<=arr.size();i++)
+      {
             auto it=map.find(i);
-            if(it==map.end()) miss=i;
+            if(it==map.end())
+                miss=i;
         }
-     ans.push_back(miss);
+      ans.push_back(miss);
       return ans;  
     }
 };
