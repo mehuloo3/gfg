@@ -10,44 +10,18 @@ class Solution {
   public:
     int findKRotation(vector<int> &arr) {
         // Code Here
-        
-        int n=arr.size();
-        int start=0;
-        int end=arr.size()-1;
-        int mini=arr[0];
-        int mid=start+(end-start)/2;
-        int res;
-        for(int i=0;i<arr.size();i++)
+        int mini=0;
+        int i=1;
+        while(i<arr.size())
         {
-            if(mini>arr[i])
-          {
-              mini=arr[i];
-          }
+            if(arr[i]<arr[mini])
+            {
+                mini=i;
+            }
+            i++;
            
         }
-        // while(start<=end)
-        // {
-        //   if(arr[mid]==mini)
-        //   {
-        //       res=mid;
-        //   }
-        //   else if(arr[mid]<mini)
-        //   {
-        //       start=mid+1;
-        //   }
-        //   else
-        //   {
-        //       end=mid-1;
-        //   }
-        // }
-        
-        for (int i = 0; i < n; i++) {
-        if (arr[i] == mini) {
-            res = i;
-            break;  
-        }
-    }
-        return res;
+      return mini;  
     }
 };
 
