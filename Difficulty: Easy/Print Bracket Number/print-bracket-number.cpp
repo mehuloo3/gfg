@@ -10,23 +10,24 @@ class Solution {
 
     vector<int> bracketNumbers(string str) {
         // Your code goes here
-        vector<int>answer;
-        stack <int>s;
+        stack<int>st;
+        vector<int>ans;
         int cnt=0;
-        for(char c:str){
-            if(c=='(')
+        for(int i=0;i<str.size();i++)
+        {
+            if(str[i]=='(')
             {
                 cnt++;
-                s.push(cnt);
-                answer.push_back(cnt);
+                st.push(cnt);
+                ans.push_back(cnt);
             }
-            else if(c ==')') {
-                answer.push_back(s.top());
-                s.pop();
+            else if(str[i]==')')
+            {
+                ans.push_back(st.top());
+                st.pop();
             }
-            
-        } 
-        return answer;
+        }
+        return ans;
     }
 };
 
@@ -53,7 +54,7 @@ int main() {
         for (auto i : ans)
             cout << i << " ";
 
-        cout << "\n";
+        cout << "\n~\n";
     }
 
     return 0;
