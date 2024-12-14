@@ -8,15 +8,15 @@ class Solution {
   public:
     int search(vector<int>& arr, int key) {
         // complete the function here
-        
+        int ans=-1;
         for(int i=0;i<arr.size();i++)
         {
             if(arr[i]==key)
             {
-                return i;
+                ans=i;
             }
         }
-        return -1;
+        return ans;
     }
 };
 
@@ -38,6 +38,7 @@ int main() {
         cin >> key;
         Solution ob;
         cout << ob.search(arr, key) << endl;
+        cout << "~" << endl;
     }
     return 0;
 }
