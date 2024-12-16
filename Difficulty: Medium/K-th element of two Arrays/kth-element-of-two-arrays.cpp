@@ -6,45 +6,21 @@ using namespace std;
 // } Driver Code Ends
 class Solution {
   public:
-    int kthElement(int k, vector<int>& arr1, vector<int>& arr2) {
+    int kthElement(vector<int>& a, vector<int>& b, int k) {
         // code here
+        int n=a.size();
+        int m=b.size();
         vector<int>ans;
-        int res=0;
-        for(int i=0;i<arr1.size();i++)
+        for(int i=0;i<n;i++)
         {
-            ans.push_back(arr1[i]);
+            ans.push_back(a[i]);
         }
-        for(int i=0;i<arr2.size();i++)
+        for(int i=0;i<m;i++)
         {
-            ans.push_back(arr2[i]);
+            ans.push_back(b[i]);
         }
-       sort(ans.begin(),ans.end());
-       
-    //   int i=1;
-    //   while(i<=ans.size())
-    //   {
-    //       if(i==k)
-    //       {
-    //           return ans[i];
-    //       }
-    //       i++;
-    //   int start=0;
-    //   int end=ans.size()-1;
-    //   while(start<=end)
-    //   {
-    //       int mid=start+(end-start)/2;
-    //       if(mid==k)
-    //       {
-    //           return ans[mid];
-    //       }
-    //       else if(k<mid)
-    //       {
-    //           end=mid-1;
-    //       }
-    //       else
-    //          start=end+1;
-    //   }
-    return ans[k-1];
+        sort(ans.begin(),ans.end());
+        return ans[k-1];
     }
 };
 
@@ -61,22 +37,22 @@ int main() {
         cin.ignore();
         string input;
         int num;
-        vector<int> arr1, arr2;
+        vector<int> a, b;
 
         getline(cin, input);
         stringstream s2(input);
         while (s2 >> num) {
-            arr1.push_back(num);
+            a.push_back(num);
         }
 
         getline(cin, input);
         stringstream s3(input);
         while (s3 >> num) {
-            arr2.push_back(num);
+            b.push_back(num);
         }
 
         Solution ob;
-        cout << ob.kthElement(k, arr1, arr2) << endl;
+        cout << ob.kthElement(a, b, k) << endl << "~\n";
     }
     return 0;
 }
