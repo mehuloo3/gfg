@@ -12,25 +12,22 @@ class Solution
     vector<int> sumTriangles(const vector<vector<int> >& matrix, int n)
     {
         // code here
-        int upper=0;
-        int lower=0;
-        
+        int sum1=0,sum2=0;
         for(int i=0;i<n;i++)
         {
-            for(int j=i;j<n;j++)
+            for(int j=0;j<n;j++)
             {
-                upper+=matrix[i][j];
+                if(i>=j) sum1+=matrix[i][j];
             }
         }
-        
-           for(int i=0;i<n;i++)
+        for(int i=0;i<n;i++)
         {
-            for(int j=0;j<=i;j++)
+            for(int j=0;j<n;j++)
             {
-                lower+=matrix[i][j];
+                if(i<=j) sum2+=matrix[i][j];
             }
         }
-        return {upper,lower};
+        return {sum2,sum1};
     }
 };
 
@@ -58,7 +55,9 @@ int main() {
         for (int i = 0; i < result.size(); ++i)
             cout<<result[i]<<" ";
         cout<<endl;
-    }
+    
+cout << "~" << "\n";
+}
     return 0;
 }
 // } Driver Code Ends
