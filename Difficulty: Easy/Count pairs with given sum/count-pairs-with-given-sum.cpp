@@ -1,38 +1,24 @@
 //{ Driver Code Starts
-// Initial template for C++
-
 #include <bits/stdc++.h>
 using namespace std;
 
 
 // } Driver Code Ends
-// User function template for C++
-
 class Solution {
   public:
-    int getPairsCount(const vector<int>& arr, int k) {
-        // code here
-        // int count=0;
-        // for(int i=0;i<arr.size();i++)
-        // {
-        //     for(int j=i+1;j<arr.size();j++)
-        //     {
-        //         if(arr[i]+arr[j]==k) count++;
-        //     }
-        // }
-        // return count;
-        int answer=0;
-        int n=arr.size();
-        map<int,int>mp;
-        for(int i=0;i<n;i++)
-        {
-            if(mp.find(k-arr[i])!=mp.end())
-            {
-                answer+=mp[k-arr[i]];
-            }
-            mp[arr[i]]++;
-        }
-        return answer;
+    int countPairs(vector<int> &arr, int target) {
+        // Code here
+        int cnt=0;
+       unordered_map<int,int>mp;
+       for(auto i:arr)
+       {
+           if(mp.find(target-i)!=mp.end())
+           {
+               cnt+=mp[target-i];
+           }
+            mp[i]++;
+       }
+       return cnt;
     }
 };
 
@@ -41,28 +27,24 @@ class Solution {
 int main() {
     int t;
     cin >> t;
-    cin.ignore(); // Ignore the newline character after t
+    cin.ignore();
     while (t--) {
         vector<int> arr;
-        int k;
-
-        cin >> k;
-        cin.ignore(); // Ignore the newline character after k
-
         string input;
-
-        getline(cin, input); // Read the entire line for the array elements
+        getline(cin, input);
         stringstream ss(input);
         int number;
         while (ss >> number) {
             arr.push_back(number);
         }
-
+        int target;
+        cin >> target;
+        cin.ignore();
         Solution ob;
-        auto ans = ob.getPairsCount(arr, k);
-        cout << ans << "\n";
-    }
+        int res = ob.countPairs(arr, target);
 
+        cout << res << endl << "~" << endl;
+    }
     return 0;
 }
 // } Driver Code Ends
