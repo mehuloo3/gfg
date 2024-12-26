@@ -9,13 +9,47 @@ class Solution {
   public:
     bool twoSum(vector<int>& arr, int target) {
         // code here
+        // int i=0;
+        // int j=arr.size()-1;
+        // while(i<=j)
+        // {
+        //     if(arr[i]+arr[j]!=target)
+        //     {
+        //         return false;
+        //     }
+        //     i++;
+        //     j--;
+        // }
         
-        for(int i=0;i<arr.size();i++)
+        // for(int i=0;i<arr.size();i++)
+        // {
+        //     for(int j=0;j<arr.size();i++)
+        //     {
+        //         if(arr[i]+arr[j]==target)
+        //         {
+        //             return true;
+        //         }
+        //     }
+        // }
+        // return false;
+        sort(arr.begin(),arr.end());
+        int start=0;
+        int end=arr.size()-1;
+        int sum=0;
+        while(start<end)
         {
-            for(int j=i+1;j<arr.size();j++)
-            if(arr[i]+arr[j]==target)
+            sum=arr[start]+arr[end];
+            if(sum==target)
             {
                 return true;
+            }
+            else if(sum<target)
+            {
+                start++;
+            }
+            else
+            {
+                end--;
             }
         }
         return false;
@@ -27,11 +61,11 @@ class Solution {
 int main() {
     int t;
     cin >> t;
-    cin.ignore(); // To discard any leftover newline characters
+    cin.ignore();
     while (t--) {
         int x;
         cin >> x;
-        cin.ignore(); // To discard any leftover newline characters
+        cin.ignore();
 
         vector<int> arr;
         string input;
