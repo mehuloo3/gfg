@@ -14,7 +14,7 @@ class Solution {
        {
            if(mp.find(target-i)!=mp.end())
            {
-               cnt+=mp[target-i];
+               cnt=cnt+mp[target-i];
            }
             mp[i]++;
        }
