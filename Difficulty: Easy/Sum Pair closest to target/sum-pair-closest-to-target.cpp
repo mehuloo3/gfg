@@ -13,7 +13,6 @@ class Solution {
         // code here
       sort(arr.begin(),arr.end());
       int res=INT_MAX;
-      int ans=INT_MIN;
       int n=arr.size();
       int i=0;
       int j=n-1;
@@ -22,13 +21,13 @@ class Solution {
       {
           int x=arr[j]+arr[i];
           int diff=abs(target-x);
-          int y=abs(arr[i]-arr[j]);
+          int y=abs(arr[j]-arr[i]);
           if(diff<res)
           {
               res=diff;
               a={arr[i],arr[j]};
           }
-          else if(x<=target)
+          else if(x<target)
           {
               i++;
           }
