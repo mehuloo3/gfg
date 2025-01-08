@@ -12,9 +12,9 @@ class Solution {
         
         sort(arr.begin(),arr.end());
         int n=arr.size();
-        // int k=n-1;
+        int k=n-1;
         int cnt=0;
-        for(int k=n-1;k>=2;k--)
+        while(k>=2)
         {
             int l=0,r=k-1;
             while(l<r)
@@ -30,7 +30,7 @@ class Solution {
                     l++;
                 }
             }
-            // k--;
+            k--;
         }
         return cnt;
     }
