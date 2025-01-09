@@ -6,30 +6,25 @@ using namespace std;
 // } Driver Code Ends
 class Solution {
   public:
-    // Function to find a continuous sub-array which adds up to a given number.
-    vector<int> subarraySum(vector<int> arr, int n, long long s) {
-        // Your code here
-        
-        int sum=0;
-        int j=0;
-        int i=0;
+    vector<int> subarraySum(vector<int> &arr, int target) {
+        // code here
         vector<int>ans;
-        for(i=0;i<arr.size();i++)
+        int n=arr.size();
+        for(int i=0;i<n;i++)
         {
-            sum+=arr[i];
-            while(sum>s and j<i)
+            int sum=0;
+            for(int j=i;j<n;j++)
             {
-                sum=sum-arr[j];
-                j++;
+                sum+=arr[j];
+                if(sum==target)
+                {
+                    return {i+1,j+1};
+                }
+                if(sum>target) break;
             }
-            
-            if(sum==s)
-            {
-                return {j+1,i+1};
-            }
-            
         }
         return {-1};
+       
     }
 };
 
@@ -38,24 +33,30 @@ class Solution {
 int main() {
     int t;
     cin >> t;
+    cin.ignore();
     while (t--) {
-        int n;
-        long long s;
-        cin >> n >> s;
-        vector<int> arr(n);
-        // int arr[n];
-        const int mx = 1e9;
-        for (int i = 0; i < n; i++) {
-            cin >> arr[i];
-        }
-        Solution ob;
-        vector<int> res;
-        res = ob.subarraySum(arr, n, s);
+        vector<int> arr;
+        int d;
+        string input;
 
-        for (int i = 0; i < res.size(); i++)
-            cout << res[i] << " ";
-        cout << endl;
+        getline(cin, input);
+        stringstream ss(input);
+        int number;
+        while (ss >> number) {
+            arr.push_back(number);
+        }
+
+        cin >> d;
+        cin.ignore();
+
+        Solution ob;
+        vector<int> result = ob.subarraySum(arr, d);
+        for (int i : result) {
+            cout << i << " ";
+        }
+        cout << "\n~\n";
     }
     return 0;
 }
+
 // } Driver Code Ends
