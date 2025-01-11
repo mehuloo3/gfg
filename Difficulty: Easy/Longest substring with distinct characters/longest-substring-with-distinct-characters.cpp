@@ -9,32 +9,39 @@ class Solution {
   public:
     int longestUniqueSubstr(string &s) {
         // code here
-        int ans=INT_MIN;
-        unordered_set<char>st;
-        int j=0;
-        for(int i=0;i<s.size();i++)
+    //  unordered_set<char>st;
+     int n=s.size();
+    //  int ans=INT_MIN;
+    //  int j=0;
+    //  for(int i=0;i<n;i++)
+    //  {
+    //      while(st.find(s[i])!=st.end())
+    //      {
+    //          st.erase(s[j++]);
+    //      }
+    //      st.insert(s[i]);
+         
+    //      ans=max(ans,(int)st.size());
+    //  }
+    //  return ans;
+    
+    int ans=INT_MIN;
+    for(int i=0;i<n;i++)
+    {
+        vector<bool>freq(26,false);
+        for(int j=i;j<n;j++)
         {
-            while(st.find(s[i])!=st.end())
-            {
-                st.erase(s[j++]);
-            }
-            st.insert(s[i]);
-            ans=max(ans,(int)st.size());
+            if(freq[s[j]-'a']==true)
+              break;
+             else 
+        {
+            ans=max(ans,j-i+1);
+            freq[s[j]-'a']=true;
         }
-        // for(int i=0;i<s.size();i++)
-        // {
-        //     for(int j=i+1;j<s.size();j++)
-        //     {
-        //         if(s[i]==s[j])
-        //         {
-        //           break;
-        //         }else
-        //         {
-        //              ans=max(ans,j-i);
-        //         }
-        //     }
-        // }
-        return ans;
+        }
+       
+    }
+    return ans;
     }
 };
 
