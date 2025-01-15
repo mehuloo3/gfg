@@ -23,7 +23,7 @@ class Solution {
             {
                 ans=max(ans,i-mp[sum-k]);
             }
-            if(mp.find(sum)==mp.end())
+             if(mp.find(sum)==mp.end())
             {
                 mp[sum]=i;
             }
