@@ -1,46 +1,51 @@
 //{ Driver Code Starts
 #include <bits/stdc++.h>
-
 using namespace std;
 
 
 // } Driver Code Ends
-//User function template for C++
-class Solution{
-public:	
-	vector<int> kLargest(int arr[], int n, int k) {
-	    // code here
-	    sort(arr,arr+n);
-	    vector<int>ans;
-	    for(int i=1;i<=k;i++)
-	    {
-	        ans.push_back(arr[n-i]);
-	    }
-	    return ans;
-	}
-
+class Solution {
+  public:
+    vector<int> kLargest(vector<int>& arr, int k) {
+        // Your code here
+        vector<int>ans;
+        sort(arr.begin(),arr.end());
+        reverse(arr.begin(),arr.end());
+        
+        for(int i=0;i<k;i++)
+        {
+            ans.push_back(arr[i]);
+        }
+        return ans;
+    }
 };
 
 //{ Driver Code Starts.
-
 int main() {
-    int t;
-    cin >> t;
+    string ts;
+    getline(cin, ts);
+    int t = stoi(ts);
     while (t--) {
-        int n, k;
-        cin >> n >> k;
-        int arr[n];
-        for (int i = 0; i < n; i++) {
-            cin >> arr[i];
+
+        vector<int> arr;
+        string input;
+        getline(cin, input);
+        stringstream ss(input);
+        int number;
+        while (ss >> number) {
+            arr.push_back(number);
         }
+        string ks;
+        getline(cin, ks);
+        int k = stoi(ks);
         Solution ob;
-        auto ans = ob.kLargest(arr, n, k);
-        for (auto x : ans) {
-            cout << x << " ";
+        vector<int> ans = ob.kLargest(arr, k);
+        for (auto it : ans) {
+            cout << it << " ";
         }
-        cout << "\n";
+        cout << endl;
+        cout << "~" << endl;
     }
     return 0;
 }
-
 // } Driver Code Ends
