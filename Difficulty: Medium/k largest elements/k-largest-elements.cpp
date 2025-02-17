@@ -9,10 +9,13 @@ class Solution {
     vector<int> kLargest(vector<int>& arr, int k) {
         // Your code here
         vector<int>ans;
+        //12,5,787,1,23
         sort(arr.begin(),arr.end());
+        //1,5,12,23,787   k=2 k means i need the k's largest element which is last k element 787,23
+        //for these in reverse the element for better 
+        //787,23,12,5,1 k=2  ans=[787,23].
         reverse(arr.begin(),arr.end());
-        
-        for(int i=0;i<k;i++)
+        for(int  i=0;i<k;i++)
         {
             ans.push_back(arr[i]);
         }
