@@ -4,48 +4,68 @@ using namespace std;
 
 
 // } Driver Code Ends
+
+static bool comp(pair<int,int>a,pair<int,int>b)
+{
+    return a.second<b.second;
+}
 class Solution {
   public:
     // Function to find the maximum number of meetings that can
     // be performed in a meeting room.
-    int maxMeetings(int n, int start[], int end[]) {
+    int maxMeetings(vector<int>& start, vector<int>& end) {
         // Your code here
-        vector<pair<int,int>>ans;
-        
-        for(int i=0;i<n;i++){
-            ans.push_back({end[i],start[i]});
+        vector<pair<int,int>>timer;
+        for(int i=0;i<start.size();i++)
+        {
+            timer.push_back({start[i],end[i]});
         }
+        sort(timer.begin(),timer.end(),comp);
         
-        sort(ans.begin(),ans.end());
-        int cnt=1;
-        int last=ans[0].first;
-        for(int i=1;i<n;i++){
-            if(last<ans[i].second){
-                last=ans[i].first;
-                cnt++;
-            }
+        int cnt=0;
+        int a=-1;
+        for(int i=0;i<start.size();i++){
+        if(timer[i].first>a)
+        {
+            cnt++;
+            a=timer[i].second;
         }
-        return cnt;
+
+        }
+         return cnt;
     }
 };
 
+
 //{ Driver Code Starts.
+
 int main() {
+
     int t;
     cin >> t;
+    cin.ignore();
     while (t--) {
-        int n;
-        cin >> n;
-        int start[n], end[n];
-        for (int i = 0; i < n; i++)
-            cin >> start[i];
+        string input;
+        int num;
+        vector<int> start;
 
-        for (int i = 0; i < n; i++)
-            cin >> end[i];
+        getline(cin, input);
+        stringstream s2(input);
+        while (s2 >> num) {
+            start.push_back(num);
+        }
+
+        vector<int> end;
+        getline(cin, input);
+        stringstream s22(input);
+        while (s22 >> num) {
+            end.push_back(num);
+        }
 
         Solution ob;
-        int ans = ob.maxMeetings(n, start, end);
+        int ans = ob.maxMeetings(start, end);
         cout << ans << endl;
+        cout << "~" << endl;
     }
     return 0;
 }
