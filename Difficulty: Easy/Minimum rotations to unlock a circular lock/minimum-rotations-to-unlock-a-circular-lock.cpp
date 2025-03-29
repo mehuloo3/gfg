@@ -13,17 +13,30 @@ public:
     int rotationCount(long long R, long long D)
     {
         // code here
-        string x=to_string(R);
-        string y=to_string(D);
+        // string x=to_string(R);
+        // string y=to_string(D);
+        // int ans=0;
+        // for(int i=0;i<x.size();i++)
+        // {
+        //   int val=abs((int)(x[i])-(int)(y[i]));
+        //   if(val>5)
+        //   {
+        //       val=10-val;
+        //   }
+        //   ans+=val;
+        // }int x
+        // return ans;
         int ans=0;
-        for(int i=0;i<x.size();i++)
+        int x;
+        int y;
+        while(R)
         {
-           int val=abs((x[i]-'0')-(y[i]-'0'));
-           if(val>5)
-           {
-               val=10-val;
-           }
-           ans+=val;
+            x=R%10;
+            y=D%10;
+            
+            R/=10;
+            D/=10;
+            ans+=min(abs(x-y),10-abs(x-y));
         }
         return ans;
     }
