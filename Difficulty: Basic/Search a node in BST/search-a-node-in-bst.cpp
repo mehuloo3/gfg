@@ -49,30 +49,31 @@ int main() {
 
         cout << search(root, s);
         cout << endl;
-    }
+    
+cout << "~" << "\n";
+}
 }
 
 // } Driver Code Ends
 
 
 // Function to search a node in BST.
-void SearchNode(Node *root,vector<int>&res)
-{
-if(root==NULL) return;
-SearchNode(root->left,res);
-res.push_back(root->data);
-SearchNode(root->right,res);
-}
 bool search(Node* root, int x) {
     // Your code here
-    vector<int>res;
-    SearchNode(root,res);
-    for(int i=0;i<res.size();i++)
+    if(!root)
     {
-        if(res[i]==x)
-        {
-            return true; 
-        }
+        return 0;
     }
-    return false;
+    if(root->data==x)
+    {
+        return 1;
+    }
+    if(root->data > x)
+    {
+        return search(root->left,x);
+    }
+    else if(root->data <x)
+    {
+     return search(root->right,x);
+    }
 }
