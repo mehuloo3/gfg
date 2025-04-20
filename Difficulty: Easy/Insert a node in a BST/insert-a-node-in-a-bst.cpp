@@ -17,6 +17,7 @@ struct Node {
 
 
 // } Driver Code Ends
+
 // Function to insert a node in a BST.
 
 /*
@@ -32,28 +33,28 @@ struct Node {
 };
 */
 
-class Solution
-{
-    public:
-        Node* insert(Node* node, int data) {
-        
-            // Your code goes here
-            if(node==NULL)
-            {
-                return new Node(data);
-            }
-            if(data > node->data)
-            {
-               node->right=insert(node->right,data);
-            }
-            if(data < node->data)
-            {
-                node->left=insert(node->left,data);
-            }
-            return node;
+class Solution {
+  public:
+    Node* insert(Node* node, int key) {
+
+        // Your code goes here
+      if(!node)
+    {
+        Node *temp=new Node(key);
+        return temp;
     }
 
+    if(node->data>key)
+    {
+        node->left=insert(node->left,key);
+    }else if(node->data < key)
+    {
+      node->right=insert(node->right,key);
+    }
+    return node;
+    }
 };
+
 
 
 //{ Driver Code Starts.
@@ -61,14 +62,16 @@ class Solution
 // Function to Build Tree
 Node* buildTree(string str) {
     // Corner Case
-    if (str.length() == 0 || str[0] == 'N') return NULL;
+    if (str.length() == 0 || str[0] == 'N')
+        return NULL;
 
     // Creating vector of strings from input
     // string after spliting by space
     vector<string> ip;
 
     istringstream iss(str);
-    for (string str; iss >> str;) ip.push_back(str);
+    for (string str; iss >> str;)
+        ip.push_back(str);
 
     // Create the root of the tree
     Node* root = new Node(stoi(ip[0]));
@@ -100,7 +103,8 @@ Node* buildTree(string str) {
 
         // For the right child
         i++;
-        if (i >= ip.size()) break;
+        if (i >= ip.size())
+            break;
         currVal = ip[i];
 
         // If the right child is not null
@@ -119,7 +123,8 @@ Node* buildTree(string str) {
 }
 
 void inorder(Node* root, vector<int>& v) {
-    if (root == NULL) return;
+    if (root == NULL)
+        return;
 
     inorder(root->left, v);
     v.push_back(root->data);
@@ -144,10 +149,14 @@ int main() {
         ob.insert(root, k);
         vector<int> v;
         inorder(root, v);
-        for (int i = 0; i < v.size(); i++) cout << v[i] << " ";
+        for (int i = 0; i < v.size(); i++)
+            cout << v[i] << " ";
         cout << endl;
 
         // cout<<"~"<<endl;
+
+        cout << "~"
+             << "\n";
     }
     return 0;
 }
